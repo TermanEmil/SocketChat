@@ -40,6 +40,14 @@ ChatServer::ChatServer(const int port)
 		});
 }
 
+ChatServer::~ChatServer()
+{
+	if (m_server)
+	{
+		delete m_server;
+	}
+}
+
 void ChatServer::waitAndParseAnyActivity()
 {
 	m_server->waitForAnActivity();

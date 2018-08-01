@@ -11,11 +11,12 @@ class ChatServer
 {
 public:
 	ChatServer(int port);
+	~ChatServer();
 	
 	void waitAndParseAnyActivity();
 	
 private:
-	SocketTools::Server* m_server;
+	SocketTools::Server* m_server = nullptr;
 	std::map<int, ChatUserModel> m_users;
 	
 	void onNewUserConnects(int socket);
