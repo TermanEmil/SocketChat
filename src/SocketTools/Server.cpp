@@ -114,7 +114,7 @@ static int addSocketsToReadSet(
 {
 	auto maxSocketDescriptor = -1;
 	
-	for (int i = 0; i < nbOfSockets; i++)
+	for (size_t i = 0; i < nbOfSockets; i++)
 	{
 		const auto socketDescriptor = sockets[i];
 		if (socketDescriptor > 0)
@@ -148,7 +148,8 @@ int Server::waitForAnActivity(
 		m_masterSocket,
 		clientsMaxSockDescript);
 
-	timeval timeout = { 0 };
+	timeval timeout;
+	memset(&timeout, 0, sizeof(timeout));
 	timeout.tv_sec = seconds;
 	timeout.tv_usec = microseconds;
 
@@ -199,7 +200,7 @@ size_t Server::getNbOfConnections() const
 
 void Server::addClientSocket(const int newSocket)
 {
-	for (int i = 0; i < m_maxNbOfClients; i++)
+	for (size_t i = 0; i < m_maxNbOfClients; i++)
 	{
 		if (m_clientSockets[i] <= 0)
 		{

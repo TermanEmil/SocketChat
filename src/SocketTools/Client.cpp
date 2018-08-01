@@ -22,7 +22,8 @@ void Client::setup(const char* ip, int port)
 	if ((m_socket = socket(AF_INET, SOCK_STREAM, 0)) == -1)
 		throw SocketExceptionStr(STR("socket: " + std::strerror(errno)));
 	
-	sockaddr_in serverAddr = { 0 };
+	sockaddr_in serverAddr;
+	memset(&serverAddr, 0, sizeof(serverAddr));
 	serverAddr.sin_family = AF_INET;
 	serverAddr.sin_port = htons(port);
 	

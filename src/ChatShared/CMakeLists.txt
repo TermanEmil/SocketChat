@@ -21,9 +21,8 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 )
 
 # Flags
-# String(CONCAT Flags ${Flags} " " "-Wall")
-# String(CONCAT Flags ${Flags} " " "-Wextra")
-# String(CONCAT Flags ${Flags} " " "-Werror")
-# String(CONCAT Flags ${Flags} " " "-Waddress")
-# String(CONCAT Flags ${Flags} " " "-Waggregate-return")
+String(CONCAT Flags ${Flags} " " "-Wall")
+String(CONCAT Flags ${Flags} " " "-Werror")
+String(CONCAT Flags ${Flags} " " "-Waddress")
+String(CONCAT Flags ${Flags} " " "-Waggregate-return")
 Set(CMAKE_CXX_FLAGS "${Flags}")
